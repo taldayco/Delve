@@ -1,5 +1,6 @@
 #include <SDL2/SDL.h>
 #include <iostream>
+#include <string>
 
 int main(int argc, char *argv[]) {
   if (SDL_Init(SDL_INIT_VIDEO) != 0) {
@@ -38,6 +39,7 @@ int main(int argc, char *argv[]) {
       if (event.type == SDL_QUIT) {
         quit = true;
       } else if (event.type == SDL_KEYDOWN) {
+        std::cout << std::string(100, '\n');
         std::cout << " key was pressed" << std::endl;
         if (event.key.keysym.sym == SDLK_ESCAPE) {
           quit = true;
