@@ -129,6 +129,30 @@ delve/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/delve.dir/build.make CMakeFiles/delve.dir/build
 .PHONY : delve/fast
 
+src/MainGame.o: src/MainGame.cpp.o
+.PHONY : src/MainGame.o
+
+# target to build an object file
+src/MainGame.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/delve.dir/build.make CMakeFiles/delve.dir/src/MainGame.cpp.o
+.PHONY : src/MainGame.cpp.o
+
+src/MainGame.i: src/MainGame.cpp.i
+.PHONY : src/MainGame.i
+
+# target to preprocess a source file
+src/MainGame.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/delve.dir/build.make CMakeFiles/delve.dir/src/MainGame.cpp.i
+.PHONY : src/MainGame.cpp.i
+
+src/MainGame.s: src/MainGame.cpp.s
+.PHONY : src/MainGame.s
+
+# target to generate assembly for a file
+src/MainGame.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/delve.dir/build.make CMakeFiles/delve.dir/src/MainGame.cpp.s
+.PHONY : src/MainGame.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -162,6 +186,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... delve"
+	@echo "... src/MainGame.o"
+	@echo "... src/MainGame.i"
+	@echo "... src/MainGame.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

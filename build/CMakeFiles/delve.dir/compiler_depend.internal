@@ -3,6 +3,7 @@
 
 CMakeFiles/delve.dir/src/main.cpp.o
  /home/matosade/Projects/Game_Dev/delve/src/main.cpp
+ /home/matosade/Projects/Game_Dev/delve/headers/GameSystem.h
  /usr/include/SDL2/SDL.h
  /usr/include/SDL2/SDL_assert.h
  /usr/include/SDL2/SDL_atomic.h
