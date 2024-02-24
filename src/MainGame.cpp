@@ -1,6 +1,7 @@
 #include "../headers/MainGame.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_events.h>
+#include <iostream>
 
 MainGame::MainGame() {
   _window = nullptr;
@@ -36,6 +37,9 @@ void MainGame::processInput() {
     switch (evnt.type) {
     case SDL_QUIT:
       _gameState = GameState::EXIT;
+
+    case SDL_MOUSEMOTION:
+      std::cout << evnt.motion.x << " " << evnt.motion.y << std::endl;
       break;
     }
   };
