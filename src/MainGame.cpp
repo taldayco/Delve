@@ -1,9 +1,11 @@
-#include "../headers/MainGame.h"
+#include "../headers/MainGame.h" // Assuming this is the correct path for MainGame.h
+#include <GL/glew.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_events.h>
 #include <SDL2/SDL_video.h>
 #include <iostream>
 #include <string>
+#define GLEW_STATIC
 
 // Check for fatal errors:
 // if they exist: print the error
@@ -44,14 +46,20 @@ void MainGame::initSystems() {
   }
 
   SDL_GLContext glContext = SDL_GL_CreateContext(_window);
-  if (glContext == nullptr)
+  if (glContext == nullptr) {
     fatalError("SDL_GL Context could not be created.");
+  }
+  GLenum error = glewInit();
+  if (error != GLEW_OK) {
+    fatalError("Coul Not Init Glew");
+  }
 }
 
 // Declares what should happen in the game.
 void MainGame::gameLoop() {
   while (_gameState != GameState::EXIT) {
     processInput();
+    drawGame();
   }
 };
 
@@ -75,3 +83,5 @@ void MainGame::processInput() {
     }
   };
 };
+
+void MainGame::drawGame() { glClearDepth(1.0); };
