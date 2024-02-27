@@ -1,8 +1,5 @@
 #include "../headers/MainGame.h" // Assuming this is the correct path for MainGame.h
 #include <GL/glew.h>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_events.h>
-#include <SDL2/SDL_video.h>
 #include <iostream>
 #include <string>
 #define GLEW_STATIC
