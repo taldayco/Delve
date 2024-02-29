@@ -5,6 +5,7 @@ project(delve)
 set(SOURCES
   src/main.cpp
   src/MainGame.cpp
+  src/Sprite.cpp
 )
 
 #add the add_executable and specify souce files
