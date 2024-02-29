@@ -1,9 +1,6 @@
 #include "../headers/MainGame.h" // Assuming this is the correct path for MainGame.h
-#include <GL/glew.h>
-#include <SDL2/SDL_video.h>
 #include <iostream>
 #include <string>
-#define GLEW_STATIC
 
 // Check for fatal errors:
 // if they exist: print the error
@@ -27,6 +24,7 @@ MainGame::~MainGame() {}
 
 void MainGame::run() {
   initSystems();
+  _sprite.init(-1.0f, -1.0f, 1.0f, 1.0f);
   gameLoop();
 }
 
@@ -91,7 +89,11 @@ void MainGame::processInput() {
 void MainGame::drawGame() {
   // make sure the screen is clear before drawing
   glClearDepth(1.0);
+  // clear the color and depth buffer
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+  _sprite.draw();
+
+  // swap our buffer before drawing
   SDL_GL_SwapWindow(_window);
 };

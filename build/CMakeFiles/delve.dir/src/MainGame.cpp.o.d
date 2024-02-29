@@ -2,6 +2,7 @@ CMakeFiles/delve.dir/src/MainGame.cpp.o: \
  /home/matosade/Projects/Game_Dev/delve/src/MainGame.cpp \
  /usr/include/stdc-predef.h \
  /home/matosade/Projects/Game_Dev/delve/src/../headers/MainGame.h \
+ /home/matosade/Projects/Game_Dev/delve/src/../headers/../headers/Sprite.h \
  /usr/include/GL/glew.h /usr/include/c++/13.2.1/cstddef \
  /usr/include/c++/13.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
  /usr/include/c++/13.2.1/x86_64-pc-linux-gnu/bits/os_defines.h \

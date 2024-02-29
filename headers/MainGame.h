@@ -1,4 +1,5 @@
 #pragma once
+#include "../headers/Sprite.h"
 #include <GL/glew.h>
 #include <SDL2/SDL.h>
 
@@ -22,4 +23,6 @@ private:
   int _screenHeight;
 
   GameState _gameState;
+
+  Sprite _sprite;
 };
