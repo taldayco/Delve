@@ -1,5 +1,6 @@
 #include "../headers/MainGame.h" // Assuming this is the correct path for MainGame.h
 #include <GL/glew.h>
+#include <SDL2/SDL_video.h>
 #include <iostream>
 #include <string>
 #define GLEW_STATIC
@@ -50,6 +51,12 @@ void MainGame::initSystems() {
   if (error != GLEW_OK) {
     fatalError("Coul Not Init Glew");
   }
+  // instead of drawing and clearing on the same Window,
+  // Prevents flickering by seperating each process into its own buffer
+  SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+
+  // sets default color when glClear is called
+  glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
 }
 
 // Declares what should happen in the game.
@@ -81,4 +88,10 @@ void MainGame::processInput() {
   };
 };
 
-void MainGame::drawGame() { glClearDepth(1.0); };
+void MainGame::drawGame() {
+  // make sure the screen is clear before drawing
+  glClearDepth(1.0);
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+  SDL_GL_SwapWindow(_window);
+};

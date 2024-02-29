@@ -13,5 +13,11 @@ add_executable(delve ${SOURCES})
 # Find SDL2 Package
 find_package(SDL2 CONFIG REQUIRED)
 
+# Find GLEW package
+find_package(GLEW REQUIRED)
+
+#Find OpenGL
+find_package(OpenGL REQUIRED)
+
 # Link SDL2 to delve
-target_link_libraries(delve PRIVATE SDL2::SDL2 SDL2::SDL2main)
+target_link_libraries(delve PRIVATE SDL2::SDL2 SDL2::SDL2main GLEW::GLEW OpenGL::GL)

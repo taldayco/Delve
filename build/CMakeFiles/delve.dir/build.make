@@ -110,6 +110,9 @@ delve: CMakeFiles/delve.dir/src/MainGame.cpp.o
 delve: CMakeFiles/delve.dir/build.make
 delve: /usr/lib/libSDL2-2.0.so.0.3000.0
 delve: /usr/lib/libSDL2main.a
+delve: /usr/lib/libGLEW.so
+delve: /usr/lib/libGLX.so
+delve: /usr/lib/libOpenGL.so
 delve: CMakeFiles/delve.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/matosade/Projects/Game_Dev/delve/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable delve"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/delve.dir/link.txt --verbose=$(VERBOSE)
