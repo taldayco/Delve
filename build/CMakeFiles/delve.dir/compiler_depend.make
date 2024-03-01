@@ -431,9 +431,9 @@ CMakeFiles/delve.dir/src/GLSLProgram.cpp.o: /home/matosade/Projects/Game_Dev/del
   /usr/lib/gcc/x86_64-pc-linux-gnu/13.2.1/include/stdint.h
 
 CMakeFiles/delve.dir/src/MainGame.cpp.o: /home/matosade/Projects/Game_Dev/delve/src/MainGame.cpp \
+  /home/matosade/Projects/Game_Dev/delve/headers/GLSLProgram.h \
   /home/matosade/Projects/Game_Dev/delve/headers/Sprite.h \
   /home/matosade/Projects/Game_Dev/delve/headers/Errors.h \
-  /home/matosade/Projects/Game_Dev/delve/headers/GLSLProgram.h \
   /home/matosade/Projects/Game_Dev/delve/headers/MainGame.h \
   /usr/include/GL/gl.h \
   /usr/include/GL/glew.h \
@@ -837,8 +837,8 @@ CMakeFiles/delve.dir/src/Sprite.cpp.o: /home/matosade/Projects/Game_Dev/delve/sr
   /usr/lib/gcc/x86_64-pc-linux-gnu/13.2.1/include/stdint.h
 
 CMakeFiles/delve.dir/src/main.cpp.o: /home/matosade/Projects/Game_Dev/delve/src/main.cpp \
-  /home/matosade/Projects/Game_Dev/delve/headers/Sprite.h \
   /home/matosade/Projects/Game_Dev/delve/headers/GLSLProgram.h \
+  /home/matosade/Projects/Game_Dev/delve/headers/Sprite.h \
   /home/matosade/Projects/Game_Dev/delve/headers/MainGame.h \
   /usr/include/GL/gl.h \
   /usr/include/GL/glew.h \
