@@ -1,17 +1,6 @@
 #include "../headers/MainGame.h" // Assuming this is the correct path for MainGame.h
+#include "../headers/Errors.h"
 #include <iostream>
-#include <string>
-
-// Check for fatal errors:
-// if they exist: print the error
-// and quit SDL.
-void fatalError(std::string errorString) {
-  std::cout << errorString << std::endl;
-  std::cout << "Enter any key to quit...";
-  int tmp;
-  std::cin >> tmp;
-  SDL_Quit();
-}
 
 MainGame::MainGame() {
   _window = nullptr;
@@ -55,6 +44,15 @@ void MainGame::initSystems() {
 
   // sets default color when glClear is called
   glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
+
+  initShaders();
+}
+
+void MainGame::initShaders() {
+  _colorProgram.compileShaders("../Shaders/colorShading.vert",
+                               "../Shaders/colorShading.frag");
+  _colorProgram.addAttribute("vertexPosition");
+  _colorProgram.linkshaders();
 }
 
 // Declares what should happen in the game.
@@ -91,6 +89,10 @@ void MainGame::drawGame() {
   glClearDepth(1.0);
   // clear the color and depth buffer
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+  _colorProgram.use();
+
+  _colorProgram.unUse();
 
   _sprite.draw();
 

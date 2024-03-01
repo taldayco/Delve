@@ -83,10 +83,24 @@ CMakeFiles/delve.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/delve.dir/src/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/matosade/Projects/Game_Dev/delve/src/main.cpp -o CMakeFiles/delve.dir/src/main.cpp.s
 
+CMakeFiles/delve.dir/src/Errors.cpp.o: CMakeFiles/delve.dir/flags.make
+CMakeFiles/delve.dir/src/Errors.cpp.o: /home/matosade/Projects/Game_Dev/delve/src/Errors.cpp
+CMakeFiles/delve.dir/src/Errors.cpp.o: CMakeFiles/delve.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matosade/Projects/Game_Dev/delve/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/delve.dir/src/Errors.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/delve.dir/src/Errors.cpp.o -MF CMakeFiles/delve.dir/src/Errors.cpp.o.d -o CMakeFiles/delve.dir/src/Errors.cpp.o -c /home/matosade/Projects/Game_Dev/delve/src/Errors.cpp
+
+CMakeFiles/delve.dir/src/Errors.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/delve.dir/src/Errors.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/matosade/Projects/Game_Dev/delve/src/Errors.cpp > CMakeFiles/delve.dir/src/Errors.cpp.i
+
+CMakeFiles/delve.dir/src/Errors.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/delve.dir/src/Errors.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/matosade/Projects/Game_Dev/delve/src/Errors.cpp -o CMakeFiles/delve.dir/src/Errors.cpp.s
+
 CMakeFiles/delve.dir/src/MainGame.cpp.o: CMakeFiles/delve.dir/flags.make
 CMakeFiles/delve.dir/src/MainGame.cpp.o: /home/matosade/Projects/Game_Dev/delve/src/MainGame.cpp
 CMakeFiles/delve.dir/src/MainGame.cpp.o: CMakeFiles/delve.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matosade/Projects/Game_Dev/delve/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/delve.dir/src/MainGame.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matosade/Projects/Game_Dev/delve/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/delve.dir/src/MainGame.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/delve.dir/src/MainGame.cpp.o -MF CMakeFiles/delve.dir/src/MainGame.cpp.o.d -o CMakeFiles/delve.dir/src/MainGame.cpp.o -c /home/matosade/Projects/Game_Dev/delve/src/MainGame.cpp
 
 CMakeFiles/delve.dir/src/MainGame.cpp.i: cmake_force
@@ -100,7 +114,7 @@ CMakeFiles/delve.dir/src/MainGame.cpp.s: cmake_force
 CMakeFiles/delve.dir/src/Sprite.cpp.o: CMakeFiles/delve.dir/flags.make
 CMakeFiles/delve.dir/src/Sprite.cpp.o: /home/matosade/Projects/Game_Dev/delve/src/Sprite.cpp
 CMakeFiles/delve.dir/src/Sprite.cpp.o: CMakeFiles/delve.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matosade/Projects/Game_Dev/delve/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/delve.dir/src/Sprite.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matosade/Projects/Game_Dev/delve/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/delve.dir/src/Sprite.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/delve.dir/src/Sprite.cpp.o -MF CMakeFiles/delve.dir/src/Sprite.cpp.o.d -o CMakeFiles/delve.dir/src/Sprite.cpp.o -c /home/matosade/Projects/Game_Dev/delve/src/Sprite.cpp
 
 CMakeFiles/delve.dir/src/Sprite.cpp.i: cmake_force
@@ -111,18 +125,36 @@ CMakeFiles/delve.dir/src/Sprite.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/delve.dir/src/Sprite.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/matosade/Projects/Game_Dev/delve/src/Sprite.cpp -o CMakeFiles/delve.dir/src/Sprite.cpp.s
 
+CMakeFiles/delve.dir/src/GLSLProgram.cpp.o: CMakeFiles/delve.dir/flags.make
+CMakeFiles/delve.dir/src/GLSLProgram.cpp.o: /home/matosade/Projects/Game_Dev/delve/src/GLSLProgram.cpp
+CMakeFiles/delve.dir/src/GLSLProgram.cpp.o: CMakeFiles/delve.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matosade/Projects/Game_Dev/delve/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/delve.dir/src/GLSLProgram.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/delve.dir/src/GLSLProgram.cpp.o -MF CMakeFiles/delve.dir/src/GLSLProgram.cpp.o.d -o CMakeFiles/delve.dir/src/GLSLProgram.cpp.o -c /home/matosade/Projects/Game_Dev/delve/src/GLSLProgram.cpp
+
+CMakeFiles/delve.dir/src/GLSLProgram.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/delve.dir/src/GLSLProgram.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/matosade/Projects/Game_Dev/delve/src/GLSLProgram.cpp > CMakeFiles/delve.dir/src/GLSLProgram.cpp.i
+
+CMakeFiles/delve.dir/src/GLSLProgram.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/delve.dir/src/GLSLProgram.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/matosade/Projects/Game_Dev/delve/src/GLSLProgram.cpp -o CMakeFiles/delve.dir/src/GLSLProgram.cpp.s
+
 # Object files for target delve
 delve_OBJECTS = \
 "CMakeFiles/delve.dir/src/main.cpp.o" \
+"CMakeFiles/delve.dir/src/Errors.cpp.o" \
 "CMakeFiles/delve.dir/src/MainGame.cpp.o" \
-"CMakeFiles/delve.dir/src/Sprite.cpp.o"
+"CMakeFiles/delve.dir/src/Sprite.cpp.o" \
+"CMakeFiles/delve.dir/src/GLSLProgram.cpp.o"
 
 # External object files for target delve
 delve_EXTERNAL_OBJECTS =
 
 delve: CMakeFiles/delve.dir/src/main.cpp.o
+delve: CMakeFiles/delve.dir/src/Errors.cpp.o
 delve: CMakeFiles/delve.dir/src/MainGame.cpp.o
 delve: CMakeFiles/delve.dir/src/Sprite.cpp.o
+delve: CMakeFiles/delve.dir/src/GLSLProgram.cpp.o
 delve: CMakeFiles/delve.dir/build.make
 delve: /usr/lib/libSDL2-2.0.so.0.3000.0
 delve: /usr/lib/libSDL2main.a
@@ -130,7 +162,7 @@ delve: /usr/lib/libGLEW.so
 delve: /usr/lib/libGLX.so
 delve: /usr/lib/libOpenGL.so
 delve: CMakeFiles/delve.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/matosade/Projects/Game_Dev/delve/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable delve"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/matosade/Projects/Game_Dev/delve/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable delve"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/delve.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

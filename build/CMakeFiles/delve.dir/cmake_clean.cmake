@@ -1,4 +1,8 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/delve.dir/src/Errors.cpp.o"
+  "CMakeFiles/delve.dir/src/Errors.cpp.o.d"
+  "CMakeFiles/delve.dir/src/GLSLProgram.cpp.o"
+  "CMakeFiles/delve.dir/src/GLSLProgram.cpp.o.d"
   "CMakeFiles/delve.dir/src/MainGame.cpp.o"
   "CMakeFiles/delve.dir/src/MainGame.cpp.o.d"
   "CMakeFiles/delve.dir/src/Sprite.cpp.o"

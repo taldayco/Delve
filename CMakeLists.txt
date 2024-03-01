@@ -4,8 +4,10 @@ project(delve)
 #add the .cpp files to source 
 set(SOURCES
   src/main.cpp
+  src/Errors.cpp
   src/MainGame.cpp
   src/Sprite.cpp
+  src/GLSLProgram.cpp
 )
 
 #add the add_executable and specify souce files

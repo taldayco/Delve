@@ -129,6 +129,54 @@ delve/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/delve.dir/build.make CMakeFiles/delve.dir/build
 .PHONY : delve/fast
 
+src/Errors.o: src/Errors.cpp.o
+.PHONY : src/Errors.o
+
+# target to build an object file
+src/Errors.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/delve.dir/build.make CMakeFiles/delve.dir/src/Errors.cpp.o
+.PHONY : src/Errors.cpp.o
+
+src/Errors.i: src/Errors.cpp.i
+.PHONY : src/Errors.i
+
+# target to preprocess a source file
+src/Errors.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/delve.dir/build.make CMakeFiles/delve.dir/src/Errors.cpp.i
+.PHONY : src/Errors.cpp.i
+
+src/Errors.s: src/Errors.cpp.s
+.PHONY : src/Errors.s
+
+# target to generate assembly for a file
+src/Errors.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/delve.dir/build.make CMakeFiles/delve.dir/src/Errors.cpp.s
+.PHONY : src/Errors.cpp.s
+
+src/GLSLProgram.o: src/GLSLProgram.cpp.o
+.PHONY : src/GLSLProgram.o
+
+# target to build an object file
+src/GLSLProgram.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/delve.dir/build.make CMakeFiles/delve.dir/src/GLSLProgram.cpp.o
+.PHONY : src/GLSLProgram.cpp.o
+
+src/GLSLProgram.i: src/GLSLProgram.cpp.i
+.PHONY : src/GLSLProgram.i
+
+# target to preprocess a source file
+src/GLSLProgram.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/delve.dir/build.make CMakeFiles/delve.dir/src/GLSLProgram.cpp.i
+.PHONY : src/GLSLProgram.cpp.i
+
+src/GLSLProgram.s: src/GLSLProgram.cpp.s
+.PHONY : src/GLSLProgram.s
+
+# target to generate assembly for a file
+src/GLSLProgram.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/delve.dir/build.make CMakeFiles/delve.dir/src/GLSLProgram.cpp.s
+.PHONY : src/GLSLProgram.cpp.s
+
 src/MainGame.o: src/MainGame.cpp.o
 .PHONY : src/MainGame.o
 
@@ -210,6 +258,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... delve"
+	@echo "... src/Errors.o"
+	@echo "... src/Errors.i"
+	@echo "... src/Errors.s"
+	@echo "... src/GLSLProgram.o"
+	@echo "... src/GLSLProgram.i"
+	@echo "... src/GLSLProgram.s"
 	@echo "... src/MainGame.o"
 	@echo "... src/MainGame.i"
 	@echo "... src/MainGame.s"
