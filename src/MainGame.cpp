@@ -52,7 +52,7 @@ void MainGame::initShaders() {
   _colorProgram.compileShaders("../Shaders/colorShading.vert",
                                "../Shaders/colorShading.frag");
   _colorProgram.addAttribute("vertexPosition");
-  _colorProgram.linkshaders();
+  _colorProgram.linkShaders();
 }
 
 // Declares what should happen in the game.
@@ -92,9 +92,9 @@ void MainGame::drawGame() {
 
   _colorProgram.use();
 
-  _colorProgram.unUse();
-
   _sprite.draw();
+
+  _colorProgram.unUse();
 
   // swap our buffer before drawing
   SDL_GL_SwapWindow(_window);

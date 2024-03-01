@@ -1,6 +1,6 @@
 #pragma once
+#include "../headers/GLSLProgram.h"
 #include "../headers/Sprite.h"
-#include "GLSLProgram.h"
 #include <GL/glew.h>
 #include <SDL2/SDL.h>
 

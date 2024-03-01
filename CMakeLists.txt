@@ -10,6 +10,9 @@ set(SOURCES
   src/GLSLProgram.cpp
 )
 
+# Add shader files to be copied to build directory
+file(COPY Shaders DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+
 #add the add_executable and specify souce files
 add_executable(delve ${SOURCES})
 

@@ -2,7 +2,7 @@ CMakeFiles/delve.dir/src/MainGame.cpp.o: \
  /home/matosade/Projects/Game_Dev/delve/src/MainGame.cpp \
  /usr/include/stdc-predef.h \
  /home/matosade/Projects/Game_Dev/delve/src/../headers/MainGame.h \
- /home/matosade/Projects/Game_Dev/delve/src/../headers/../headers/Sprite.h \
+ /home/matosade/Projects/Game_Dev/delve/src/../headers/../headers/GLSLProgram.h \
  /usr/include/GL/glew.h /usr/include/c++/13.2.1/cstddef \
  /usr/include/c++/13.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
  /usr/include/c++/13.2.1/x86_64-pc-linux-gnu/bits/os_defines.h \
@@ -20,9 +20,7 @@ CMakeFiles/delve.dir/src/MainGame.cpp.o: \
  /usr/include/bits/time64.h /usr/include/bits/wchar.h \
  /usr/include/bits/stdint-intn.h /usr/include/bits/stdint-uintn.h \
  /usr/include/bits/stdint-least.h /usr/include/GL/glu.h \
- /usr/include/GL/gl.h \
- /home/matosade/Projects/Game_Dev/delve/src/../headers/GLSLProgram.h \
- /usr/include/c++/13.2.1/string \
+ /usr/include/GL/gl.h /usr/include/c++/13.2.1/string \
  /usr/include/c++/13.2.1/bits/requires_hosted.h \
  /usr/include/c++/13.2.1/bits/stringfwd.h \
  /usr/include/c++/13.2.1/bits/memoryfwd.h \
@@ -108,12 +106,13 @@ CMakeFiles/delve.dir/src/MainGame.cpp.o: \
  /usr/include/c++/13.2.1/bits/memory_resource.h \
  /usr/include/c++/13.2.1/bits/uses_allocator.h \
  /usr/include/c++/13.2.1/bits/uses_allocator_args.h \
- /usr/include/c++/13.2.1/tuple /usr/include/SDL2/SDL.h \
- /usr/include/SDL2/SDL_main.h /usr/include/SDL2/SDL_stdinc.h \
- /usr/include/SDL2/SDL_config.h /usr/include/SDL2/SDL_platform.h \
- /usr/include/SDL2/begin_code.h /usr/include/SDL2/close_code.h \
- /usr/include/c++/13.2.1/stdlib.h /usr/include/string.h \
- /usr/include/strings.h /usr/include/inttypes.h \
+ /usr/include/c++/13.2.1/tuple \
+ /home/matosade/Projects/Game_Dev/delve/src/../headers/../headers/Sprite.h \
+ /usr/include/SDL2/SDL.h /usr/include/SDL2/SDL_main.h \
+ /usr/include/SDL2/SDL_stdinc.h /usr/include/SDL2/SDL_config.h \
+ /usr/include/SDL2/SDL_platform.h /usr/include/SDL2/begin_code.h \
+ /usr/include/SDL2/close_code.h /usr/include/c++/13.2.1/stdlib.h \
+ /usr/include/string.h /usr/include/strings.h /usr/include/inttypes.h \
  /usr/include/c++/13.2.1/math.h /usr/include/c++/13.2.1/cmath \
  /usr/include/math.h /usr/include/bits/math-vector.h \
  /usr/include/bits/libm-simd-decl-stubs.h \

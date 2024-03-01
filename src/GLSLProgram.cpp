@@ -23,7 +23,7 @@ void GLSLProgram::compileShaders(const std::string &vertexShaderFilePath,
   compileShaders(fragmentShaderFilepath, _fragmentShaderID);
 };
 
-void GLSLProgram::linkshaders() {
+void GLSLProgram::linkShaders() {
   // Vertex and fragment shaders are successfully compiled.
   // Now time to link them together into a program.
   // Get a program object.
