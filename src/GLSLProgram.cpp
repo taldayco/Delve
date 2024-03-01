@@ -24,10 +24,6 @@ void GLSLProgram::compileShaders(const std::string &vertexShaderFilePath,
 };
 
 void GLSLProgram::linkShaders() {
-  // Vertex and fragment shaders are successfully compiled.
-  // Now time to link them together into a program.
-  // Get a program object.
-  _programID = glCreateProgram();
 
   // Attach our shaders to our program
   glAttachShader(_programID, _vertexShaderID);
@@ -83,6 +79,10 @@ void GLSLProgram::unUse() {
 };
 
 void GLSLProgram::compileShaders(const std::string &filePath, GLuint id) {
+  // Vertex and fragment shaders are successfully compiled.
+  // Now time to link them together into a program.
+  // Get a program object.
+  _programID = glCreateProgram();
 
   std::ifstream vertexFile(filePath);
   if (vertexFile.fail()) {
