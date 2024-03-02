@@ -1,3 +1,0 @@
-/home/matosade/Projects/Game_Dev/delve/build/CMakeFiles/delve.dir
-/home/matosade/Projects/Game_Dev/delve/build/CMakeFiles/edit_cache.dir
-/home/matosade/Projects/Game_Dev/delve/build/CMakeFiles/rebuild_cache.dir
