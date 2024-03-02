@@ -806,6 +806,7 @@ CMakeFiles/delve.dir/src/MainGame.cpp.o: /home/matosade/Projects/Game_Dev/delve/
 
 CMakeFiles/delve.dir/src/Sprite.cpp.o: /home/matosade/Projects/Game_Dev/delve/src/Sprite.cpp \
   /home/matosade/Projects/Game_Dev/delve/headers/Sprite.h \
+  /home/matosade/Projects/Game_Dev/delve/headers/Vertex.h \
   /usr/include/GL/gl.h \
   /usr/include/GL/glew.h \
   /usr/include/GL/glu.h \
@@ -1912,6 +1913,8 @@ CMakeFiles/delve.dir/src/main.cpp.o: /home/matosade/Projects/Game_Dev/delve/src/
 /usr/include/string.h:
 
 /usr/include/strings.h:
+
+/home/matosade/Projects/Game_Dev/delve/headers/Vertex.h:
 
 /usr/include/sys/cdefs.h:
 
