@@ -1,17 +1,22 @@
 #pragma once
 #include <GL/glew.h>
 
+struct Position {
+  float x;
+  float y;
+};
+
+struct Color {
+  GLubyte r;
+  GLubyte g;
+  GLubyte b;
+  GLubyte a;
+};
+
 // you want your vertex struct to be a mulitple of 4 bytes
 struct Vertex {
-  struct Position {
-    float x;
-    float y;
-  } position;
+  Position position;
 
-  struct Color {
-    GLubyte r;
-    GLubyte g;
-    GLubyte b;
-    GLubyte a;
-  } color;
+  // 4 bytes for r g b a
+  Color color;
 };
