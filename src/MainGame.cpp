@@ -1,6 +1,5 @@
 #include "../headers/MainGame.h" // Assuming this is the correct path for MainGame.h
 #include "../headers/Errors.h"
-#include "../headers/ImageLoader.h"
 
 #include <iostream>
 
@@ -15,9 +14,16 @@ MainGame::~MainGame() {}
 
 void MainGame::run() {
   initSystems();
-  _sprite.init(-1.0f, -1.0f, 2.0f, 2.0f);
-  _playerTexture = ImageLoader::loadPNG(
+  _sprites.push_back(new Sprite());
+  _sprites.back()->init(
+      -1.0f, -1.0f, 1.0f, 1.0f,
       "../assets/0x72_DungeonTilesetII_v1.6/frames/wizzard_m_idle_anim_f0.png");
+
+  _sprites.push_back(new Sprite());
+  _sprites.back()->init(
+      -0.0f, -1.0f, 1.0f, 1.0f,
+      "../assets/0x72_DungeonTilesetII_v1.6/frames/wizzard_m_idle_anim_f0.png");
+
   gameLoop();
 }
 
@@ -40,7 +46,7 @@ void MainGame::initSystems() {
   }
   GLenum error = glewInit();
   if (error != GLEW_OK) {
-    fatalError("Coul Not Init Glew");
+    fatalError("Could Not Init Glew");
   }
   // instead of drawing and clearing on the same Window,
   // Prevents flickering by seperating each process into its own buffer
@@ -85,7 +91,7 @@ void MainGame::processInput() {
 
     // track the position of the mouse in SDL.
     case SDL_MOUSEMOTION:
-      std::cout << evnt.motion.x << " " << evnt.motion.y << std::endl;
+      // std::cout << evnt.motion.x << " " << evnt.motion.y << std::endl;
       break;
     }
   };
@@ -97,17 +103,24 @@ void MainGame::drawGame() {
   // clear the color and depth buffer
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+  // enable shader
   _colorProgram.use();
+
+  // use texture unit 0
   glActiveTexture(GL_TEXTURE0);
-  glBindTexture(GL_TEXTURE_2D, _playerTexture.id);
+  // bind texture to texture unit 0
   GLint textureLocation = _colorProgram.getUniformLocation("mySampler");
+  // tell shader that texture is in texture unit 0
   glUniform1i(textureLocation, 0);
 
   // set uniforms before drawing
   GLuint timeLocation = _colorProgram.getUniformLocation("time");
   glUniform1f(timeLocation, _time);
 
-  _sprite.draw();
+  // draw sprites
+  for (int i = 0; i < _sprites.size(); i++) {
+    _sprites[i]->draw();
+  }
 
   // unbind
   glBindTexture(GL_TEXTURE_2D, 0);

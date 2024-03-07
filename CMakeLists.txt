@@ -14,6 +14,8 @@ set(SOURCES
   src/IOManager.cpp
   src/ImageLoader.cpp
   src/picoPNG.cpp
+  src/ResourceManager.cpp
+  src/TextureCache.cpp
 )
 
 # Add shader files to be copied to build directory

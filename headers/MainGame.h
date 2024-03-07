@@ -4,6 +4,7 @@
 #include "../headers/Sprite.h"
 #include <GL/glew.h>
 #include <SDL2/SDL.h>
+#include <vector>
 
 enum class GameState { PLAY, EXIT };
 
@@ -27,11 +28,9 @@ private:
 
   GameState _gameState;
 
-  Sprite _sprite;
+  std::vector<Sprite *> _sprites;
 
   GLSLProgram _colorProgram;
-
-  GLTexture _playerTexture;
 
   float _time;
 };
