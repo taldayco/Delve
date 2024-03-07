@@ -4,25 +4,23 @@ project(delve)
 # Set the path to Vcpkg's CMake toolchain file
 set(CMAKE_TOOLCHAIN_FILE /opt/vcpkg/scripts/buildsystems/vcpkg.cmake)
 
-#add the .cpp files to source
+# Set the path to your game engine directory
+set(ROGUE_ENGINE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/rogue_engine)
+
+# Add the .cpp files to source
 set(SOURCES
-  src/main.cpp
-  src/Errors.cpp
-  src/MainGame.cpp
-  src/Sprite.cpp
-  src/GLSLProgram.cpp
-  src/IOManager.cpp
-  src/ImageLoader.cpp
-  src/picoPNG.cpp
-  src/ResourceManager.cpp
-  src/TextureCache.cpp
+    src/main.cpp
+    src/MainGame.cpp
 )
+
+# Add the source files from the game engine directory
+file(GLOB_RECURSE ROGUE_ENGINE_SOURCES ${ROGUE_ENGINE_DIR}/*.cpp)
+
+# Add the executable and specify source files
+add_executable(delve ${SOURCES} ${ROGUE_ENGINE_SOURCES})
 
 # Add shader files to be copied to build directory
 file(COPY Shaders DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
-
-#add the add_executable and specify souce files
-add_executable(delve ${SOURCES})
 
 # Find SDL2 Package
 find_package(SDL2 CONFIG REQUIRED)
@@ -30,22 +28,12 @@ find_package(SDL2 CONFIG REQUIRED)
 # Find GLEW package
 find_package(GLEW REQUIRED)
 
-#Find OpenGL
+# Find OpenGL
 find_package(OpenGL REQUIRED)
 
-# Link SDL2 to delve
+# Include directories for the game engine
+target_include_directories(delve PRIVATE ${ROGUE_ENGINE_DIR}/include)
+
+# Link SDL2, GLEW, and OpenGL to delve
 target_link_libraries(delve PRIVATE SDL2::SDL2 SDL2::SDL2main
-GLEW::GLEW OpenGL::GL)
-
-# Fixing Xorg Dependencies Warning
-message(WARNING "You will need to install Xorg dependencies to use feature x11:
-  sudo apt install libx11-dev libxft-dev libxext-dev")
-
-# Fixing Wayland Dependencies Warning
-message(WARNING
-"You will need to install Wayland dependencies to use feature wayland:
-  sudo apt install libwayland-dev libxkbcommon-dev libegl1-mesa-dev")
-
-# Fixing ibus Dependencies Warning
-message(WARNING "You will need to install ibus dependencies to use feature ibus:
-  sudo apt install libibus-1.0-dev")
+                                    GLEW::GLEW OpenGL::GL)

@@ -1,7 +1,8 @@
-#include "../headers/MainGame.h" // Assuming this is the correct path for MainGame.h
-#include "../headers/Errors.h"
+#include "../headers/MainGame.h"
+#include "../rogue_engine/headers/Errors.h"
 
 #include <SDL2/SDL_timer.h>
+#include <SDL2/SDL_video.h>
 #include <iostream>
 
 MainGame::MainGame()
@@ -31,6 +32,11 @@ void MainGame::run() {
 // ensure the SDL systems we need are ready for use.
 void MainGame::initSystems() {
   SDL_Init(SDL_INIT_EVERYTHING);
+
+  // instead of drawing and clearing on the same Window,
+  // Prevents flickering by seperating each process into its own buffer
+  SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+
   // set openGL up
   _window =
       SDL_CreateWindow("Delve", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
@@ -45,16 +51,20 @@ void MainGame::initSystems() {
   if (glContext == nullptr) {
     fatalError("SDL_GL Context could not be created.");
   }
+
   GLenum error = glewInit();
   if (error != GLEW_OK) {
     fatalError("Could Not Init Glew");
   }
-  // instead of drawing and clearing on the same Window,
-  // Prevents flickering by seperating each process into its own buffer
-  SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+
+  // check the openGL version
+  std::printf("*** openGL Version: %s ***", glGetString(GL_VERSION));
 
   // sets default color when glClear is called
   glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
+
+  // enable vsync
+  SDL_GL_SetSwapInterval(1);
 
   initShaders();
 }

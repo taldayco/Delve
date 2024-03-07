@@ -1,7 +1,7 @@
 #pragma once
-#include "../headers/GLSLProgram.h"
-#include "../headers/GLTexture.h"
-#include "../headers/Sprite.h"
+#include "../rogue_engine/headers/GLSLProgram.h"
+#include "../rogue_engine/headers/GLTexture.h"
+#include "../rogue_engine/headers/Sprite.h"
 #include <GL/glew.h>
 #include <SDL2/SDL.h>
 #include <vector>
