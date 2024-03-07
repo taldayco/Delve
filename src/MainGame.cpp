@@ -104,8 +104,8 @@ void MainGame::drawGame() {
   glUniform1i(textureLocation, 0);
 
   // set uniforms before drawing
-  //  GLuint timeLocation = _colorProgram.getUniformLocation("time");
-  // glUniform1f(timeLocation, _time);
+  GLuint timeLocation = _colorProgram.getUniformLocation("time");
+  glUniform1f(timeLocation, _time);
 
   _sprite.draw();
 
