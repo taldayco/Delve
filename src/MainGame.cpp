@@ -1,5 +1,5 @@
 #include "../headers/MainGame.h"
-#include "../rogue_engine/headers/Errors.h"
+#include "../rogue_engine/headers/rogue_engine.h"
 
 #include <SDL2/SDL_timer.h>
 #include <SDL2/SDL_video.h>
@@ -7,7 +7,7 @@
 
 MainGame::MainGame()
     // init list
-    : _screenWidth(1024), _screenHeight(768), _time(0), _window(nullptr),
+    : _screenWidth(1024), _screenHeight(768), _time(0),
       _gameState(GameState::PLAY), _maxFPS(60.0f) {
   // placeholder
 }
@@ -16,12 +16,12 @@ MainGame::~MainGame() {}
 
 void MainGame::run() {
   initSystems();
-  _sprites.push_back(new Sprite());
+  _sprites.push_back(new rogue_engine::Sprite());
   _sprites.back()->init(
       -1.0f, -1.0f, 1.0f, 1.0f,
       "../assets/0x72_DungeonTilesetII_v1.6/frames/wizzard_m_idle_anim_f0.png");
 
-  _sprites.push_back(new Sprite());
+  _sprites.push_back(new rogue_engine::Sprite());
   _sprites.back()->init(
       -0.0f, -1.0f, 1.0f, 1.0f,
       "../assets/0x72_DungeonTilesetII_v1.6/frames/wizzard_m_idle_anim_f0.png");
@@ -31,40 +31,9 @@ void MainGame::run() {
 
 // ensure the SDL systems we need are ready for use.
 void MainGame::initSystems() {
-  SDL_Init(SDL_INIT_EVERYTHING);
 
-  // instead of drawing and clearing on the same Window,
-  // Prevents flickering by seperating each process into its own buffer
-  SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-
-  // set openGL up
-  _window =
-      SDL_CreateWindow("Delve", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-                       _screenWidth, _screenHeight, SDL_WINDOW_OPENGL);
-
-  // more errorchecking
-  if (_window == nullptr) {
-    fatalError("SDL Window Could Not Be Created");
-  }
-
-  SDL_GLContext glContext = SDL_GL_CreateContext(_window);
-  if (glContext == nullptr) {
-    fatalError("SDL_GL Context could not be created.");
-  }
-
-  GLenum error = glewInit();
-  if (error != GLEW_OK) {
-    fatalError("Could Not Init Glew");
-  }
-
-  // check the openGL version
-  std::printf("*** openGL Version: %s ***", glGetString(GL_VERSION));
-
-  // sets default color when glClear is called
-  glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
-
-  // enable vsync
-  SDL_GL_SetSwapInterval(1);
+  rogue_engine::init();
+  _window.create("Game Engine", _screenWidth, _screenHeight, 0);
 
   initShaders();
 }
@@ -158,7 +127,7 @@ void MainGame::drawGame() {
   _colorProgram.unUse();
 
   // swap our buffer before drawing
-  SDL_GL_SwapWindow(_window);
+  _window.swapBuffer();
 };
 
 // fps counter

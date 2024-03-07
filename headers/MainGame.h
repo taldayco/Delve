@@ -2,6 +2,8 @@
 #include "../rogue_engine/headers/GLSLProgram.h"
 #include "../rogue_engine/headers/GLTexture.h"
 #include "../rogue_engine/headers/Sprite.h"
+#include "../rogue_engine/headers/Window.h"
+#include "../rogue_engine/headers/rogue_engine.h"
 #include <GL/glew.h>
 #include <SDL2/SDL.h>
 #include <vector>
@@ -23,13 +25,13 @@ private:
   void drawGame();
   void calculateFPS();
 
-  SDL_Window *_window;
+  rogue_engine::Window _window;
   int _screenWidth;
   int _screenHeight;
-
   GameState _gameState;
-  std::vector<Sprite *> _sprites;
-  GLSLProgram _colorProgram;
+
+  std::vector<rogue_engine::Sprite *> _sprites;
+  rogue_engine::GLSLProgram _colorProgram;
 
   float _fps;
   float _maxFPS;
