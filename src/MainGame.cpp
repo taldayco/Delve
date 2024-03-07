@@ -1,12 +1,13 @@
 #include "../headers/MainGame.h" // Assuming this is the correct path for MainGame.h
 #include "../headers/Errors.h"
 
+#include <SDL2/SDL_timer.h>
 #include <iostream>
 
 MainGame::MainGame()
     // init list
     : _screenWidth(1024), _screenHeight(768), _time(0), _window(nullptr),
-      _gameState(GameState::PLAY) {
+      _gameState(GameState::PLAY), _maxFPS(60.0f) {
   // placeholder
 }
 
@@ -70,9 +71,29 @@ void MainGame::initShaders() {
 // Declares what should happen in the game.
 void MainGame::gameLoop() {
   while (_gameState != GameState::EXIT) {
+
+    // used for frame time measuring
+    float startTicks = SDL_GetTicks();
+
     processInput();
     _time += 0.01;
     drawGame();
+
+    calculateFPS();
+
+    // print once every ten frames
+    static int frameCounter = 0;
+    frameCounter++;
+    if (frameCounter == 10) {
+      std::cout << _fps << std::endl;
+      frameCounter = 0;
+    }
+
+    // limit the FPS to the max fps
+    float frameTicks = SDL_GetTicks() - startTicks;
+    if (1000.0f / _maxFPS > frameTicks) {
+      SDL_Delay((1000.0f / _maxFPS) - frameTicks);
+    }
   }
 };
 
@@ -129,3 +150,40 @@ void MainGame::drawGame() {
   // swap our buffer before drawing
   SDL_GL_SwapWindow(_window);
 };
+
+// fps counter
+void MainGame::calculateFPS() {
+  static const int NUM_SAMPLES = 10;
+  static float frameTimes[NUM_SAMPLES];
+  static int currentFrame = 0;
+
+  static float prevTicks = SDL_GetTicks();
+  float currentTicks;
+  currentTicks = SDL_GetTicks();
+
+  _frameTime = currentTicks - prevTicks;
+  frameTimes[currentFrame % NUM_SAMPLES] = _frameTime;
+
+  prevTicks = currentTicks;
+
+  int count;
+
+  currentFrame++;
+  if (currentFrame < NUM_SAMPLES) {
+    count = currentFrame;
+  } else {
+    count = NUM_SAMPLES;
+  }
+
+  float frameTimeAverage = 0;
+  for (int i = 0; i < count; i++) {
+    frameTimeAverage += frameTimes[i];
+  }
+  frameTimeAverage /= count;
+
+  if (frameTimeAverage > 0) {
+    _fps = 1000.0f / frameTimeAverage;
+  } else {
+    _fps = 60.0f;
+  }
+}
