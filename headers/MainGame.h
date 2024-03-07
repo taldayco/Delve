@@ -1,5 +1,6 @@
 #pragma once
 #include "../headers/GLSLProgram.h"
+#include "../headers/GLTexture.h"
 #include "../headers/Sprite.h"
 #include <GL/glew.h>
 #include <SDL2/SDL.h>
@@ -29,6 +30,8 @@ private:
   Sprite _sprite;
 
   GLSLProgram _colorProgram;
+
+  GLTexture _playerTexture;
 
   float _time;
 };

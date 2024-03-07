@@ -4,9 +4,11 @@
 //input data from the VBO. Each vertex is 2 floats.
 in vec2 vertexPosition;
 in vec4 vertexColor;
+in vec2 vertexUV;
 
 out vec2 fragmentPosition;
 out vec4 fragmentColor;
+out vec2 fragmentUV;
 
 void main() {
     //set the x,y position on the screen
@@ -19,4 +21,6 @@ void main() {
 
     fragmentPosition = vertexPosition;
     fragmentColor = vertexColor;
+
+    fragmentUV = vertexUV;
 }

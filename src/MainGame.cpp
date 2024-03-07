@@ -1,5 +1,7 @@
 #include "../headers/MainGame.h" // Assuming this is the correct path for MainGame.h
 #include "../headers/Errors.h"
+#include "../headers/ImageLoader.h"
+
 #include <iostream>
 
 MainGame::MainGame()
@@ -14,6 +16,8 @@ MainGame::~MainGame() {}
 void MainGame::run() {
   initSystems();
   _sprite.init(-1.0f, -1.0f, 2.0f, 2.0f);
+  _playerTexture = ImageLoader::loadPNG(
+      "../assets/0x72_DungeonTilesetII_v1.6/frames/wizzard_m_idle_anim_f0.png");
   gameLoop();
 }
 
@@ -53,6 +57,7 @@ void MainGame::initShaders() {
                                "../Shaders/colorShading.frag");
   _colorProgram.addAttribute("vertexPosition");
   _colorProgram.addAttribute("vertexColor");
+  _colorProgram.addAttribute("vertexUV");
   _colorProgram.linkShaders();
 }
 
@@ -93,13 +98,19 @@ void MainGame::drawGame() {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
   _colorProgram.use();
+  glActiveTexture(GL_TEXTURE0);
+  glBindTexture(GL_TEXTURE_2D, _playerTexture.id);
+  GLint textureLocation = _colorProgram.getUniformLocation("mySampler");
+  glUniform1i(textureLocation, 0);
 
   // set uniforms before drawing
-  GLuint timeLocation = _colorProgram.getUniformLocation("time");
-  glUniform1f(timeLocation, _time);
+  //  GLuint timeLocation = _colorProgram.getUniformLocation("time");
+  // glUniform1f(timeLocation, _time);
 
   _sprite.draw();
 
+  // unbind
+  glBindTexture(GL_TEXTURE_2D, 0);
   _colorProgram.unUse();
 
   // swap our buffer before drawing

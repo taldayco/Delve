@@ -11,6 +11,9 @@ set(SOURCES
   src/MainGame.cpp
   src/Sprite.cpp
   src/GLSLProgram.cpp
+  src/IOManager.cpp
+  src/ImageLoader.cpp
+  src/picoPNG.cpp
 )
 
 # Add shader files to be copied to build directory
