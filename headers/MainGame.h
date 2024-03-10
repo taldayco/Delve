@@ -1,4 +1,5 @@
 #pragma once
+#include "../rogue_engine/headers/Camera2D.h"
 #include "../rogue_engine/headers/GLSLProgram.h"
 #include "../rogue_engine/headers/GLTexture.h"
 #include "../rogue_engine/headers/Sprite.h"
@@ -32,6 +33,7 @@ private:
 
   std::vector<rogue_engine::Sprite *> _sprites;
   rogue_engine::GLSLProgram _colorProgram;
+  rogue_engine::Camera2D _camera;
 
   float _fps;
   float _maxFPS;

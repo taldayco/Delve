@@ -19,6 +19,7 @@ file(GLOB_RECURSE ROGUE_ENGINE_SOURCES ${ROGUE_ENGINE_DIR}/*.cpp)
 # Add the executable and specify source files
 add_executable(delve ${SOURCES} ${ROGUE_ENGINE_SOURCES})
 
+
 # Add shader files to be copied to build directory
 file(COPY Shaders DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
@@ -28,6 +29,9 @@ find_package(SDL2 CONFIG REQUIRED)
 # Find GLEW package
 find_package(GLEW REQUIRED)
 
+# add opengl math library
+find_package(glm CONFIG REQUIRED)
+
 # Find OpenGL
 find_package(OpenGL REQUIRED)
 
@@ -36,4 +40,4 @@ target_include_directories(delve PRIVATE ${ROGUE_ENGINE_DIR}/include)
 
 # Link SDL2, GLEW, and OpenGL to delve
 target_link_libraries(delve PRIVATE SDL2::SDL2 SDL2::SDL2main
-                                    GLEW::GLEW OpenGL::GL)
+                                    GLEW::GLEW OpenGL::GL glm::glm-header-only)
