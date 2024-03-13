@@ -94,16 +94,16 @@ void MainGame::processInput() {
     }
   };
   if (_inputManager.isKeyPressed(SDLK_w)) {
-    _camera.setPosition(_camera.getPosition() + glm::vec2(0.0f, CAMERA_SPEED));
-  }
-  if (_inputManager.isKeyPressed(SDLK_s)) {
     _camera.setPosition(_camera.getPosition() + glm::vec2(0.0f, -CAMERA_SPEED));
   }
+  if (_inputManager.isKeyPressed(SDLK_s)) {
+    _camera.setPosition(_camera.getPosition() + glm::vec2(0.0f, CAMERA_SPEED));
+  }
   if (_inputManager.isKeyPressed(SDLK_a)) {
-    _camera.setPosition(_camera.getPosition() + glm::vec2(-CAMERA_SPEED, 0.0f));
+    _camera.setPosition(_camera.getPosition() + glm::vec2(CAMERA_SPEED, 0.0f));
   }
   if (_inputManager.isKeyPressed(SDLK_d)) {
-    _camera.setPosition(_camera.getPosition() + glm::vec2(CAMERA_SPEED, 0.0f));
+    _camera.setPosition(_camera.getPosition() + glm::vec2(-CAMERA_SPEED, 0.0f));
   }
   if (_inputManager.isKeyPressed(SDLK_q)) {
     _camera.setScale(_camera.getScale() + SCALE_SPEED);
@@ -128,10 +128,6 @@ void MainGame::drawGame() {
   GLint textureLocation = _colorProgram.getUniformLocation("mySampler");
   // tell shader that texture is in texture unit 0
   glUniform1i(textureLocation, 0);
-
-  // set time variable
-  GLuint timeLocation = _colorProgram.getUniformLocation("time");
-  glUniform1f(timeLocation, _time);
 
   // set the camera matrix
   GLint pLocation = _colorProgram.getUniformLocation("P");
