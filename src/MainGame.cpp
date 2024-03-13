@@ -60,7 +60,7 @@ void MainGame::gameLoop() {
     // print once every ten frames
     static int frameCounter = 0;
     frameCounter++;
-    if (frameCounter == 10) {
+    if (frameCounter == 10000) {
       std::cout << _fps << std::endl;
       frameCounter = 0;
     }
@@ -82,15 +82,23 @@ void MainGame::processInput() {
     // return 0 from GameState
     case SDL_QUIT:
       _gameState = GameState::EXIT;
+      break;
     // track the position of the mouse in SDL.
     case SDL_MOUSEMOTION:
-      // std::cout << evnt.motion.x << " " << evnt.motion.y << std::endl;
+      _inputManager.setMouseCoords(evnt.motion.x, evnt.motion.y);
       break;
     case SDL_KEYDOWN:
       _inputManager.pressKey(evnt.key.keysym.sym);
       break;
     case SDL_KEYUP:
       _inputManager.releaseKey(evnt.key.keysym.sym);
+      break;
+    case SDL_MOUSEBUTTONDOWN:
+      _inputManager.pressKey(evnt.button.button);
+      break;
+    case SDL_MOUSEBUTTONUP:
+      _inputManager.pressKey(evnt.button.button);
+      break;
     }
   };
   if (_inputManager.isKeyPressed(SDLK_w)) {
@@ -110,6 +118,11 @@ void MainGame::processInput() {
   }
   if (_inputManager.isKeyPressed(SDLK_e)) {
     _camera.setScale(_camera.getScale() - SCALE_SPEED);
+  }
+  if (_inputManager.isKeyPressed(SDL_BUTTON_LEFT)) {
+    glm::vec2 mouseCoords = _inputManager.getMouseCoords();
+    mouseCoords = _camera.convertScreenToWorld(mouseCoords);
+    std::cout << mouseCoords.x << " " << mouseCoords.y << std::endl;
   }
 }
 
@@ -144,17 +157,16 @@ void MainGame::drawGame() {
       rogue_engine::ResourceManager::getTexture(
           "/home/matosade/Projects/Game_Dev/delve/assets/"
           "0x72_DungeonTilesetII_v1.6/frames/wizzard_m_idle_anim_f0.png");
+
   rogue_engine::Color color;
+
   color.r = 255;
   color.g = 255;
   color.b = 255;
   color.a = 255;
 
-  for (int i = 0; i < 2; i++) {
-    _spriteBatch.draw(pos, uv, texture.id, 0.0f, color);
-    _spriteBatch.draw(pos + glm::vec4(50, 0, 0, 0), uv, texture.id, 0.0f,
-                      color);
-  }
+  _spriteBatch.draw(pos, uv, texture.id, 0.0f, color);
+
   _spriteBatch.end();
 
   _spriteBatch.renderBatch();
