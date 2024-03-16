@@ -5,6 +5,7 @@
 #include <SDL2/SDL_events.h>
 #include <SDL2/SDL_timer.h>
 #include <SDL2/SDL_video.h>
+#include <glm/geometric.hpp>
 #include <iostream>
 
 MainGame::MainGame()
@@ -122,7 +123,10 @@ void MainGame::processInput() {
   if (_inputManager.isKeyPressed(SDL_BUTTON_LEFT)) {
     glm::vec2 mouseCoords = _inputManager.getMouseCoords();
     mouseCoords = _camera.convertScreenToWorld(mouseCoords);
-    std::cout << mouseCoords.x << " " << mouseCoords.y << std::endl;
+
+    glm::vec2 playerPosition(0.0f);
+    glm::vec2 direction = mouseCoords - playerPosition;
+    direction = glm::normalize(direction);
   }
 }
 
