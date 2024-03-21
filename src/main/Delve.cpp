@@ -1,28 +1,28 @@
-#include "../headers/MainGame.h"
-#include "../rogue_engine/headers/ResourceManager.h"
-#include "../rogue_engine/headers/rogue_engine.h"
+#include "Delve.h"
+#include "../../rogue_engine/headers/ResourceManager.h"
+#include "../../rogue_engine/headers/rogue_engine.h"
 #include <SDL2/SDL_events.h>
 #include <SDL2/SDL_timer.h>
 #include <SDL2/SDL_video.h>
 #include <glm/geometric.hpp>
 #include <iostream>
 
-MainGame::MainGame()
+Delve::Delve()
     // init list
     : _screenWidth(1024), _screenHeight(768), _time(0),
       _gameState(GameState::PLAY), _maxFPS(60.0) {
   _camera.init(_screenWidth, _screenHeight);
 }
 
-MainGame::~MainGame() {}
+Delve::~Delve() {}
 
-void MainGame::run() {
+void Delve::run() {
   initSystems();
   gameLoop();
 }
 
 // ensure the SDL systems we need are ready for use.
-void MainGame::initSystems() {
+void Delve::initSystems() {
   // initialize game engine
   rogue_engine::init();
 
@@ -30,12 +30,13 @@ void MainGame::initSystems() {
   _window.create("Game Engine", _screenWidth, _screenHeight, 0);
 
   initShaders();
+  _levels.push_back(new Level("../src/dungeon_gen/textLevel.txt"));
 
   _spriteBatch.init();
   _fpsLimiter.init(_maxFPS);
 }
 
-void MainGame::initShaders() {
+void Delve::initShaders() {
   // stitch shaders and their attribues together
   _glslProgram.compileShaders("../Shaders/colorShading.vert",
                               "../Shaders/colorShading.frag");
@@ -46,7 +47,7 @@ void MainGame::initShaders() {
 }
 
 // declares what should happen while the game runs
-void MainGame::gameLoop() {
+void Delve::gameLoop() {
   while (_gameState != GameState::EXIT) {
 
     _fpsLimiter.begin();
@@ -70,7 +71,7 @@ void MainGame::gameLoop() {
 };
 
 // Monitors input in events in SDL,
-void MainGame::processInput() {
+void Delve::processInput() {
   SDL_Event evnt;
 
   const float CAMERA_SPEED = 2.0f;
@@ -131,7 +132,7 @@ void MainGame::processInput() {
   }
 }
 
-void MainGame::drawGame() {
+void Delve::drawGame() {
   // set clear depth
   glClearDepth(1.0);
   // clear the color and depth buffer

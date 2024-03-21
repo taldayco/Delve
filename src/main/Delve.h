@@ -1,22 +1,23 @@
 #pragma once
-#include "../rogue_engine/headers/Camera2D.h"
-#include "../rogue_engine/headers/GLSLProgram.h"
-#include "../rogue_engine/headers/GLTexture.h"
-#include "../rogue_engine/headers/InputManager.h"
-#include "../rogue_engine/headers/SpriteBatch.h"
-#include "../rogue_engine/headers/Timing.h"
-#include "../rogue_engine/headers/Window.h"
-#include "../rogue_engine/headers/rogue_engine.h"
+#include "../../rogue_engine/headers/Camera2D.h"
+#include "../../rogue_engine/headers/GLSLProgram.h"
+#include "../../rogue_engine/headers/GLTexture.h"
+#include "../../rogue_engine/headers/InputManager.h"
+#include "../../rogue_engine/headers/SpriteBatch.h"
+#include "../../rogue_engine/headers/Timing.h"
+#include "../../rogue_engine/headers/Window.h"
+#include "../../rogue_engine/headers/rogue_engine.h"
+#include "../dungeon_gen/Level.h"
 #include <GL/glew.h>
 #include <SDL2/SDL.h>
 #include <vector>
 
 enum class GameState { PLAY, EXIT };
 
-class MainGame {
+class Delve {
 public:
-  MainGame();
-  ~MainGame();
+  Delve();
+  ~Delve();
 
   void run();
 
@@ -46,4 +47,6 @@ private:
 
   // for the speedrunners I guess?
   float _time;
+
+  std::vector<Level *> _levels;
 };

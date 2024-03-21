@@ -1,10 +1,10 @@
-#include "../headers/MainGame.h"
+#include "Delve.h"
 #include <glm/glm.hpp>
 
 // return 0 if nothing went wrong ;)
 int main(int argc, char *argv[]) {
-  MainGame MainGame;
-  MainGame.run();
+  Delve Delve;
+  Delve.run();
 
   return 0;
 }

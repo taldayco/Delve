@@ -9,8 +9,9 @@ set(ROGUE_ENGINE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/rogue_engine)
 
 # Add the .cpp files to source
 set(SOURCES
-    src/main.cpp
-    src/MainGame.cpp
+    src/main/main.cpp
+    src/main/Delve.cpp
+    src/dungeon_gen/Level.cpp
 )
 
 # Add the source files from the game engine directory
