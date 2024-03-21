@@ -1,7 +1,6 @@
 #include "../headers/MainGame.h"
 #include "../rogue_engine/headers/ResourceManager.h"
 #include "../rogue_engine/headers/rogue_engine.h"
-
 #include <SDL2/SDL_events.h>
 #include <SDL2/SDL_timer.h>
 #include <SDL2/SDL_video.h>
@@ -24,9 +23,10 @@ void MainGame::run() {
 
 // ensure the SDL systems we need are ready for use.
 void MainGame::initSystems() {
-
+  // initialize game engine
   rogue_engine::init();
 
+  // create SDL window
   _window.create("Game Engine", _screenWidth, _screenHeight, 0);
 
   initShaders();
@@ -36,15 +36,16 @@ void MainGame::initSystems() {
 }
 
 void MainGame::initShaders() {
-  _colorProgram.compileShaders("../Shaders/colorShading.vert",
-                               "../Shaders/colorShading.frag");
-  _colorProgram.addAttribute("vertexPosition");
-  _colorProgram.addAttribute("vertexColor");
-  _colorProgram.addAttribute("vertexUV");
-  _colorProgram.linkShaders();
+  // stitch shaders and their attribues together
+  _glslProgram.compileShaders("../Shaders/colorShading.vert",
+                              "../Shaders/colorShading.frag");
+  _glslProgram.addAttribute("vertexPosition");
+  _glslProgram.addAttribute("vertexColor");
+  _glslProgram.addAttribute("vertexUV");
+  _glslProgram.linkShaders();
 }
 
-// Declares what should happen in the game.
+// declares what should happen while the game runs
 void MainGame::gameLoop() {
   while (_gameState != GameState::EXIT) {
 
@@ -131,37 +132,39 @@ void MainGame::processInput() {
 }
 
 void MainGame::drawGame() {
-  // make sure the screen is clear before drawing
+  // set clear depth
   glClearDepth(1.0);
   // clear the color and depth buffer
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-  // enable shader
-  _colorProgram.use();
+  // enable shader processing class
+  _glslProgram.use();
 
   // use texture unit 0
   glActiveTexture(GL_TEXTURE0);
   // bind texture to texture unit 0
-  GLint textureLocation = _colorProgram.getUniformLocation("mySampler");
+  GLint textureLocation = _glslProgram.getUniformLocation("mySampler");
   // tell shader that texture is in texture unit 0
   glUniform1i(textureLocation, 0);
 
-  // set the camera matrix
-  GLint pLocation = _colorProgram.getUniformLocation("P");
+  // get the location of the player and center cameraMatrix there
+  GLint playerLocation = _glslProgram.getUniformLocation("P");
   glm::mat4 cameraMatrix = _camera.getCameraMatrix();
 
-  glUniformMatrix4fv(pLocation, 1, GL_FALSE, &(cameraMatrix[0][0]));
+  glUniformMatrix4fv(playerLocation, 1, GL_FALSE, &(cameraMatrix[0][0]));
 
+  // start putting the _spriteBatch together
   _spriteBatch.begin();
 
+  // sprite attributes
   glm::vec4 pos(0.0f, 0.0f, 50.0f, 50.0f);
   glm::vec4 uv(0.0f, 0.0f, 1.0f, 1.0f);
-
+  // sprite textures
   static rogue_engine::GLTexture texture =
       rogue_engine::ResourceManager::getTexture(
           "/home/matosade/Projects/Game_Dev/delve/assets/"
           "0x72_DungeonTilesetII_v1.6/frames/wizzard_m_idle_anim_f0.png");
 
+  // initialize a color for the sprite
   rogue_engine::Color color;
 
   color.r = 255;
@@ -169,16 +172,17 @@ void MainGame::drawGame() {
   color.b = 255;
   color.a = 255;
 
+  // draw sprites
   _spriteBatch.draw(pos, uv, texture.id, 0.0f, color);
 
+  // zip up the batch and chuck it at the GPU
   _spriteBatch.end();
-
   _spriteBatch.renderBatch();
 
-  // unbind
+  // clean up
   glBindTexture(GL_TEXTURE_2D, 0);
-  _colorProgram.unUse();
+  _glslProgram.unUse();
 
-  // swap our buffer before drawing
+  // swap bugger before drawing again
   _window.swapBuffer();
 };
